@@ -209,7 +209,7 @@ void AGeelyGameState::HandleVehNaviPilotNotification1Data(TSharedPtr<FJsonObject
 				continue;
 			}
 			tmpObstacle.id = TargetObstacleJsonObject->GetNumberField("id");
-			tmpObstacle.objHeading = TargetObstacleJsonObject->GetNumberField("hdDirOfObj") * 0.1;
+			tmpObstacle.objHeading = TargetObstacleJsonObject->GetNumberField("hdDirOfObj") * -0.1;
 			tmpObstacle.objPoint.X = TargetObstacleJsonObject->GetObjectField("objPoint")->GetNumberField("dstLat") * 0.2 -6553.5;
 			tmpObstacle.objPoint.Y = TargetObstacleJsonObject->GetObjectField("objPoint")->GetNumberField("dstLgt") * 0.4 -3000;
 			tmpObstacle.objType = static_cast<EHmiObjType>(TargetObstacleJsonObject->GetNumberField("hmiObjTyp"));
@@ -375,7 +375,7 @@ void AGeelyGameState::HandleVehNaviPilotNotification8Data(TSharedPtr<FJsonObject
 		tmp.colorOfRoadArrowe = static_cast<EColorOfRoadArrow>( it->AsObject()->GetNumberField("colorOfRoadArrow"));
 		tmp.hmiRoadArrowLane = static_cast<EHmiRoadArrowLane>(it->AsObject()->GetNumberField("hmiRoadArrowLane"));
 		tmp.typOfRoadArrow = static_cast<ETypOfRoadArrow>(it->AsObject()->GetNumberField("typOfRoadArrow"));
-		tmp.hdDirOfRoadArrow = it->AsObject()->GetNumberField("colorOfRoadArrow") * 0.1;
+		tmp.hdDirOfRoadArrow = it->AsObject()->GetNumberField("colorOfRoadArrow") * -0.1;
 		tmp.roadArrowPoint.X = it->AsObject()->GetObjectField("roadArrowPoint")->GetNumberField("dstLat") * 0.2 - 6553.5;
 		tmp.roadArrowPoint.Y = it->AsObject()->GetObjectField("roadArrowPoint")->GetNumberField("dstLgt") * 0.4 - 3000;
 		RoadArrow.Add(tmp);
@@ -431,7 +431,7 @@ void AGeelyGameState::HandleVehNaviPilotNotification8Data(TSharedPtr<FJsonObject
 		}
 		FTrafficSign tmp;
 		tmp.typOfTrfcSign = static_cast<ETypOfTrfcSign>(it->AsObject()->GetNumberField("type"));
-		tmp.hdDirOfTrfcSign = (it->AsObject()->GetNumberField("hdDirOfTrfcSign")) * 0.1;
+		tmp.hdDirOfTrfcSign = (it->AsObject()->GetNumberField("hdDirOfTrfcSign")) * -0.1;
 		tmp.signDstHeight = (it->AsObject()->GetNumberField("signDstHeight")) * 0.1;
 		tmp.signDstLat = (it->AsObject()->GetNumberField("signDstLat")) * 0.2 -6553.5;
 		tmp.signDstLgt = (it->AsObject()->GetNumberField("signDstLgt")) * 0.4 -3000;
